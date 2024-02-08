@@ -26,12 +26,12 @@ app.get(
   function (req, res) {
     res.json({ time: req.time });
   },
-  app.get("/echo/:word", (req, res) => {
-    let word = req.params.word
-
-    let jsonObj = {echo: word,echo: word}
-    res.json(jsonObj)
-    }),
+  app.get("/:word/echo", (req, res) => {
+    const { word } = req.params
+    
+    let jsonObj = {echo: word,echo: word};
+    res.send(jsonObj);
+  });
 
   app.get("/json", (req, res) => {
     let msg = "Hello json";
@@ -42,4 +42,4 @@ app.get(
     res.json({
       message: msg,
     });
-  });
+  })
