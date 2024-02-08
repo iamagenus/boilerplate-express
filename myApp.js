@@ -5,11 +5,9 @@ app.get("/", (req, res) => {
   res.sendFile(__dirname + "/views/index.html");
 });
 app.get("/json", (req, res) => {
-  if (process.env.MESSAGE_STYLE == "uppercase") {
+  let response = { message: "Hello json" };
+  if (process.env.MESSAGE_STYLE === "uppercase") {
+    response.message = response.message.toUpperCase();
   }
-  res.json(
-    process.env.MESSAGE_STYLE == "uppercase"
-      ? { message: "HELLO JSON" }
-      : { message: "Hello json" },
-  );
+  res.json(response);
 });
