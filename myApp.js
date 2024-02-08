@@ -13,6 +13,10 @@ app.get("/", (req, res) => {
 });
 
 app.use("/public", express.static(__dirname + "/public"));
+app.use((req, res, next) => {
+  console.log("${req.method} ${req.path} ${req.ip}");
+  next();
+});
 
 app.get("/json", (req, res) => {
   let msg = "Hello json";
@@ -23,7 +27,4 @@ app.get("/json", (req, res) => {
   res.json({
     message: msg,
   });
-  app.post(req, res, next) => {
-  get /json -ip   
-  }
 });
