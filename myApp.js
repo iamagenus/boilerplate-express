@@ -7,11 +7,16 @@ app.get("/", function (req, res) {
   res.sendFile(__dirname + "/views/index.html");
 });
 
+process.env.MESSAGE_STYLE = "uppercase";
+
 app.get("/json", function (req, res) {
-  const mySecret = process.env["MESSAGE_STYLE"];
-  if (mySecret === "uppercase") {
-    res.json({ message: "Hello json".toUpperCase() });
+  if (process.env.MESSAGE_STYLE === "uppercase") {
+    res.json({
+      message: "HELLO JSON",
+    });
   } else {
-    res.json({ message: "Hello json" });
+    res.json({
+      message: "Hello json",
+    });
   }
 });
