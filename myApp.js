@@ -17,20 +17,29 @@ app.use(function (req, res, next) {
   console.log(req.method + " " + req.path + " " + "-" + " " + req.ip);
   next();
 });
-app.get("/now", (req, res, next) => {
-  req.time = new Date().toString();
-  next();
-}, function(req, res) {
+app.get(
+  "/now",
+  (req, res, next) => {
+    req.time = new Date().toString();
+    next();
+  },
+  function (req, res) {
     res.json({ time: req.time });
-},
+  },
+  app.get("/echo/:word", (req, res) => {
+    let word = req.params.word
 
-app.get("/json", (req, res) => {
-  let msg = "Hello json";
-  const messageStyle = process.env.MESSAGE_STYLE;
-  if (messageStyle === "uppercase") {
-    msg = msg.toUpperCase();
-  }
-  res.json({
-    message: msg,
+    let jsonObj = {echo: word,echo: word}
+    res.json(jsonObj)
+    }),
+
+  app.get("/json", (req, res) => {
+    let msg = "Hello json";
+    const messageStyle = process.env.MESSAGE_STYLE;
+    if (messageStyle === "uppercase") {
+      msg = msg.toUpperCase();
+    }
+    res.json({
+      message: msg,
+    });
   });
-});
