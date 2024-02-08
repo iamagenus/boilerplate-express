@@ -4,11 +4,16 @@ console.log("Hello World");
 app.get("/", function (req, res) {
   res.sendFile(__dirname + "/views/index.html");
 });
-const mySecret = process.env['MESSAGE_STYLE']
-response= {"message": "Hello json"}
-app.get("/json", function(req, res){
-  if (mySecret === "uppercase"){
-     res.json({message: "Hello json".toUpperCase()});
+process.env.MESSAGE_STYLE = "uppercase";
+
+app.get("/json", function (req, res) {
+  if (process.env.MESSAGE_STYLE === "uppercase") {
+    res.json({
+      message: "HELLO JSON",
+    });
+  } else {
+    res.json({
+      message: "Hello json",
+    });
   }
-  else
-    res.json({message: "Hello json"} );
+});
