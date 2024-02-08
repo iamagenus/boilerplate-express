@@ -12,4 +12,4 @@ app.get("/json", function (req, res) {
       message: "HELLO JSON",
     });
   
-});
+};
