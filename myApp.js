@@ -27,10 +27,10 @@ app.get(
     res.json({ time: req.time });
   },
   app.get("/:word/echo", (req, res) => {
-    const { word } = req.params
-    
-    let jsonObj = {echo: word,echo: word};
-    res.send(jsonObj);
+    const { word } = req.params;
+    res.json({
+      echo: word
+    });
   });
 
   app.get("/json", (req, res) => {
