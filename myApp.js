@@ -23,4 +23,7 @@ app.get("/json", (req, res) => {
   res.json({
     message: msg,
   });
+  app.post(req, res, next) => {
+  get /json -ip   
+  }
 });
